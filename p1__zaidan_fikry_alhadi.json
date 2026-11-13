@@ -1,0 +1,101 @@
+{
+  "name": "p1_\"zaidan\"",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "test-p1",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fd217122-8af5-4902-afe5-2f7880cb3539",
+      "name": "Webhook",
+      "webhookId": "0d396dbc-87f5-4987-9e0a-117fa341efb0"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4ed3963d-1e67-40a4-ba58-0c1657fcfc21",
+              "name": "status",
+              "value": "succsess",
+              "type": "string"
+            },
+            {
+              "id": "ef6a501d-e4c1-4fb8-a34c-3cce3f9c3c55",
+              "name": "massege",
+              "value": "=terima kasih {{$json.body.nama }} pesan {{ $json.body.pesan }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "ca63f3db-a0be-46bf-8ed3-bc728b89b315",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "5a1da75b-ba04-4487-8904-dfb3616f99d0",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "89ebf95a-fd67-4e2b-9016-2a11eb406a09",
+  "meta": {
+    "instanceId": "9b5df42cbe6fa10e51edf9dd26195789a97541d860e93c006f055caaa6d2f619"
+  },
+  "nodeGroups": [],
+  "id": "ugho6Pb8GskPxUdM",
+  "tags": []
+}
